@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow id="6f367007-6563-40e6-88ec-8b84197d398d">
-  <descriptionCdata><![CDATA[6f367007-6563-40e6-88ec-8b84197d398d.2e45e958-58f4-4ea8-8a70-6eb0a9cba153.prompt=Port\:
-6f367007-6563-40e6-88ec-8b84197d398d.5d5825a7-28ec-48cd-8e7d-55147413f624.prompt=Subject\:
-6f367007-6563-40e6-88ec-8b84197d398d.6df166a7-7d23-442b-8f89-6994b4a46d58.prompt=Host name\:
-6f367007-6563-40e6-88ec-8b84197d398d.7235770b-6ef7-408c-9bb2-10e16e370176.prompt=Character set\:
-6f367007-6563-40e6-88ec-8b84197d398d.7d1b14ab-dbb8-4d9e-95fa-dbf9f59ce9e4.prompt=Content transfer encoding\:
-6f367007-6563-40e6-88ec-8b84197d398d.daf83c96-27d5-47d0-aa00-47cc2f7af8d6.prompt=To\:
-6f367007-6563-40e6-88ec-8b84197d398d.dceeea52-0808-49b7-9ad9-778592fa15c9.prompt=Body\:
-6f367007-6563-40e6-88ec-8b84197d398d.e4669b3f-7622-4902-8d3f-baa5bea431ba.description=<pre>Runs the Ping command locally. \n\nInput Parameters\:\n    targetHost - The target host to ping\n    packetSize - The size of the ping packet\n    packetCount - The number of packets to send. \n    timeout - The timeout in miliseconds for the Local Ping operation. Default is 90000.\n    ipVersion - IP version forced to the ping command executed on the target host. For Windows -4 or -6 parameters will be added.On Linux will be used ping or ping6. For Solaris -A inet or -A inet6 parameters will be added. For empty string the operation will decide what format to use if targetHost is an ip literal; if targetHost is given as a hostname default 'ping' command will be used on each operating system.\nValues\: 4, 6, '' (empty string without quotes).\nDefault\: '' (empty string without quotes).\n\nResponses\:\n    success - The command was executed successfully\n    failure - The command could not be executed\n\nReturns\:\n    packetsSent - The number of packets sent\n    packetsReceived - The number of packets received\n    percentagePacketsLost - The percentage of packets lost\n    transmissionTimeMin - The minimum time taken for transmitting the packet\n    transmissionTimeMax - The maximum time taken for transmitting the packet\n    transmissionTimeAvg - The average time taken for transmitting the packet\n    returnResult - The raw output of the command\n    returnCode - The return code from the executed command\n    error - the STDERR of the command\n\nNotes\:\n    If ping does not receive any reply packets at all it will exit with code 1. If a packet count and deadline are both specified, and fewer than count packets are received by the time the deadline has arrived, it will also exit with code 1. On other error it exits with code 2. Otherwise it exits with code 0. This makes it possible to use the exit code to see if a host is alive or not. Since the result of the operation is determined from the exist code (anything other than code 0 is considered a failure), the operation's result can vary accordingly.\n</pre>
+  <descriptionCdata><![CDATA[6f367007-6563-40e6-88ec-8b84197d398d.e4669b3f-7622-4902-8d3f-baa5bea431ba.description=<pre>Runs the Ping command locally. \n\nInput Parameters\:\n    targetHost - The target host to ping\n    packetSize - The size of the ping packet\n    packetCount - The number of packets to send. \n    timeout - The timeout in miliseconds for the Local Ping operation. Default is 90000.\n    ipVersion - IP version forced to the ping command executed on the target host. For Windows -4 or -6 parameters will be added.On Linux will be used ping or ping6. For Solaris -A inet or -A inet6 parameters will be added. For empty string the operation will decide what format to use if targetHost is an ip literal; if targetHost is given as a hostname default 'ping' command will be used on each operating system.\nValues\: 4, 6, '' (empty string without quotes).\nDefault\: '' (empty string without quotes).\n\nResponses\:\n    success - The command was executed successfully\n    failure - The command could not be executed\n\nReturns\:\n    packetsSent - The number of packets sent\n    packetsReceived - The number of packets received\n    percentagePacketsLost - The percentage of packets lost\n    transmissionTimeMin - The minimum time taken for transmitting the packet\n    transmissionTimeMax - The maximum time taken for transmitting the packet\n    transmissionTimeAvg - The average time taken for transmitting the packet\n    returnResult - The raw output of the command\n    returnCode - The return code from the executed command\n    error - the STDERR of the command\n\nNotes\:\n    If ping does not receive any reply packets at all it will exit with code 1. If a packet count and deadline are both specified, and fewer than count packets are received by the time the deadline has arrived, it will also exit with code 1. On other error it exits with code 2. Otherwise it exits with code 0. This makes it possible to use the exit code to see if a host is alive or not. Since the result of the operation is determined from the exist code (anything other than code 0 is considered a failure), the operation's result can vary accordingly.\n</pre>
 6f367007-6563-40e6-88ec-8b84197d398d.e7fef2f8-971f-4fe7-b320-a2cb202e0afa.description=<pre>This operation is used to send a smtp email.\n \nInputs\:\n    hostname - The hostname or ip address of the smtp server.\n    port - The port smtp service is listening.\n    from - From email address.\n    to - A delimiter separated list of email address(es) or recipients.\n    cc - A delimiter separated list of email address(es) or recipients, to be placed in the CC.\n    bcc - A delimiter separated list of email address(es) or recipients, to be placed in the BCC.\n    subject - The email subject. If a subject spans on multiple lines, it is formatted to a single one.\n    body - The body of the email.\n    htmlEmail - The value should be true if the email is in rich text/html format. The value should be false if the email is in plain text format.\nValid values\: true, false. \nDefault value\: true. \n    readReceipt - The value should be true if read receipt is required, else false. \nValid values\: true, false. \nDefault value\: false. \n    attachments - A delimiter separated list of files to attach (must be full path).\n    headers - This input contains extra headers you want to be added in the mail. The input has a 'Map' format. Header names are separated from header values through a column delimiter and headers will be separated between them by a row delimiter.\nExample\:\n    Sensitivity\:Company-Confidential\n    message-type\:Multiple Part\n    Sensitivity\:Personal\nIn the above example, the columnDelimiter is "\:" and the rowDelimiter is the new line. You can define multiple values for the same header like in the example above. The delimiters can have multiple characters, but be careful that the rowDelimiter is not a substring of the columnDelimiter.\n    rowDelimiter - The delimiter that separates headers in the 'headers' input.\nDefault value\: "\:"\nExamples\: '|', '\='\n    columnDelimiter - The delimiter that separates the header name from header value on the same row.\nDefault value\: "\\n"\t\nExamples\: ';', '\#'\n    username - If SMTP authentication is needed, the username to send.\n    password - If SMTP authentication is needed, the password to use.\n    characterSet - The character set encoding for the entire email which includes subject, body, attached file name and the attached file. \nValid values\: UTF-8, UTF-16, UTF-32, EUC-JP, ISO-2022-JP, Shift_JIS, Windows-31J.\nDefault value\: UTF-8.\n    contentTransferEncoding - The content transfer encoding scheme (such as 7bit, 8bit, base64, quoted-printable etc) for the entire email which includes subject, body, attached file name and the attached file. \nValid values\: quoted-printable, base64, 7bit, 8bit, binary, x-token.\nDefault value\: quoted-printable (or Q Encoding).\n    delimiter - A delimiter to separate the email recipients and the attachments.\nDefault value\: ','\n    encryptionKeystore - The path to the pks12 formatted keystore used to encrypt the mail.\n    encryptionKeyAlias - The alias of a RSA key pair from the encryptionKeystore. The public key from the pair will be used to encrypt the mail. The key pair must not have password. The recommended key size is 2048 bit or higher.\n    encryptionKeystorePassword - The password for the encryptionKeystore.\n    encryptionAlgorithm - The encryption algorithm applied on the key from the keystore in order to encypt email parts. \nDefault value\: AES256_CBC.\nValid values\: DES_EDE3_CBC, RC2_CBC, IDEA_CBC, CAST5_CBC, AES128_CBC, AES192_CBC, AES256_CBC, CAMELLIA128_CBC, CAMELLIA192_CBC, CAMELLIA256_CBC, SEED_CBC, DES_EDE3_WRAP, AES128_WRAP, AES256_WRAP, CAMELLIA128_WRAP, CAMELLIA192_WRAP, CAMELLIA256_WRAP, SEED_WRAP.\n    enableTLS - Enables starttls. If the server supports TLS or SSL, the communications will be secured by TLS or SSL. If it doesn't support TLS or SSL the communication will be unsecure.\nValid values\: true, false. \nDefault value\: false.\n    timeout - The timeout in seconds for sending the mail message.\n\nResponses\:\n    success - Successfully sent the email.\n    failure - Failed to send the email.\n\nNote\:\n1. For special characters (East Asian, right-to-left languages, etc.) you must install the support files on your local machine.\n2. For doing this on Windows go to Control Panel -> Regional and Language Options -> Language and check the options at Supplemental language support.\n3. You can use KeyStore Explorer to obtain RSA Keystore with keyPairs for encryption/decryption.\n    3.1 If you get "llegal key size exception" you don't have JCE Unlimited Strength installed.\n</pre>
-6f367007-6563-40e6-88ec-8b84197d398d.fb48258b-a36a-439f-96bc-9c9122066124.prompt=enable TLS\:
-6f367007-6563-40e6-88ec-8b84197d398d.fe7ef152-579f-4720-b95b-e908e0c0111d.prompt=From\:
 ]]></descriptionCdata>
   <annotation></annotation>
   <name>Non Blocking</name>
@@ -25,7 +16,7 @@
       <type>RESOLVED</type>
       <matchRules/>
     </opResponse>
-    <opResponse id="fdf9cb57-f4d6-434a-9c0a-906ab0be2f51">
+    <opResponse id="e2172471-d96b-40fb-b14b-9ba36cc38154">
       <annotation></annotation>
       <name>failure</name>
       <isDefault>false</isDefault>
@@ -53,12 +44,12 @@
   <compatibleRuntimeContext>false</compatibleRuntimeContext>
   <historyCheckPointFlow>true</historyCheckPointFlow>
   <steps>
-    <step id="e7fef2f8-971f-4fe7-b320-a2cb202e0afa">
-      <annotation>6f367007-6563-40e6-88ec-8b84197d398d.e7fef2f8-971f-4fe7-b320-a2cb202e0afa.description</annotation>
-      <name>Send Mail</name>
+    <step id="e4669b3f-7622-4902-8d3f-baa5bea431ba">
+      <annotation>6f367007-6563-40e6-88ec-8b84197d398d.e4669b3f-7622-4902-8d3f-baa5bea431ba.description</annotation>
+      <name>Local Ping</name>
       <bounds>
-        <x>60.0</x>
-        <y>160.0</y>
+        <x>285.0</x>
+        <y>216.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -75,7 +66,138 @@
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <userInputBinding id="6df166a7-7d23-442b-8f89-6994b4a46d58">
+        <userInputBinding id="1c638280-3d41-4bd3-8dc3-5fa14e3edb8c">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>targetHost</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <prompt></prompt>
+          <isMultiSelect>false</isMultiSelect>
+          <sourceDelimiter>|</sourceDelimiter>
+        </userInputBinding>
+        <staticBinding id="dd518441-d520-4625-9412-79302b52d996">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>packetCount</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="93ec1053-b6c6-4320-bcac-e1a45e5f1ca3">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>packetSize</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="5b4407f4-5816-4624-8504-f76721fd733d">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>timeout</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="b7999495-0a7d-4dfe-84e1-a3349fdc74f5">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>ipVersion</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>4</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="4960e0f6-98c0-45ff-9a43-de652d42af56">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e7fef2f8-971f-4fe7-b320-a2cb202e0afa</refId>
+          </destination>
+          <source>
+            <refId>e4669b3f-7622-4902-8d3f-baa5bea431ba</refId>
+          </source>
+          <positions>
+            <point>
+              <x>144.0</x>
+              <y>318.0</y>
+            </point>
+            <point>
+              <x>110.0</x>
+              <y>194.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>c460b8c8-e1f7-4321-a72c-6134da73811a</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="e7fef2f8-971f-4fe7-b320-a2cb202e0afa">
+      <annotation>6f367007-6563-40e6-88ec-8b84197d398d.e7fef2f8-971f-4fe7-b320-a2cb202e0afa.description</annotation>
+      <name>Send Mail</name>
+      <bounds>
+        <x>72.0</x>
+        <y>101.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <userInputBinding id="adff34bc-e480-48c6-b11b-faec5f205559">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -86,11 +208,11 @@
           <inputSymbol>hostname</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.6df166a7-7d23-442b-8f89-6994b4a46d58.prompt</prompt>
+          <prompt></prompt>
           <isMultiSelect>false</isMultiSelect>
           <sourceDelimiter>|</sourceDelimiter>
         </userInputBinding>
-        <userInputBinding id="2e45e958-58f4-4ea8-8a70-6eb0a9cba153">
+        <staticBinding id="a413b02a-808c-45c6-8383-584b2a8f90c3">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -100,12 +222,10 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>port</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>25</value>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.2e45e958-58f4-4ea8-8a70-6eb0a9cba153.prompt</prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <userInputBinding id="fe7ef152-579f-4720-b95b-e908e0c0111d">
+        </staticBinding>
+        <userInputBinding id="c8f58266-eec6-4435-bb2a-2bb91590af65">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -116,11 +236,11 @@
           <inputSymbol>from</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.fe7ef152-579f-4720-b95b-e908e0c0111d.prompt</prompt>
+          <prompt></prompt>
           <isMultiSelect>false</isMultiSelect>
           <sourceDelimiter>|</sourceDelimiter>
         </userInputBinding>
-        <userInputBinding id="daf83c96-27d5-47d0-aa00-47cc2f7af8d6">
+        <userInputBinding id="a2fd3239-40eb-4809-8dbd-2c8f3112e92d">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -131,7 +251,7 @@
           <inputSymbol>to</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.daf83c96-27d5-47d0-aa00-47cc2f7af8d6.prompt</prompt>
+          <prompt></prompt>
           <isMultiSelect>false</isMultiSelect>
           <sourceDelimiter>|</sourceDelimiter>
         </userInputBinding>
@@ -159,7 +279,7 @@
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <userInputBinding id="5d5825a7-28ec-48cd-8e7d-55147413f624">
+        <staticBinding id="3daf890e-e002-4641-bb53-9f7e24413204">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -169,12 +289,10 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>ping</value>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.5d5825a7-28ec-48cd-8e7d-55147413f624.prompt</prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <userInputBinding id="dceeea52-0808-49b7-9ad9-778592fa15c9">
+        </staticBinding>
+        <staticBinding id="26cfbe3a-5b50-4f6a-a7f3-f482bb8fbb19">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -184,11 +302,9 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>body</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>pung</value>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.dceeea52-0808-49b7-9ad9-778592fa15c9.prompt</prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
+        </staticBinding>
         <staticBinding id="25c5e280-70e9-4f4d-90f9-fbca692b5fc5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
@@ -288,7 +404,7 @@
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <userInputBinding id="7235770b-6ef7-408c-9bb2-10e16e370176">
+        <staticBinding id="0233f2b8-a92a-47c1-a388-2de9a3cdea9c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -298,16 +414,10 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>characterSet</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>UTF-8</value>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.7235770b-6ef7-408c-9bb2-10e16e370176.prompt</prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <link>
-            <refId>3ad6a21d-fc94-4603-aa1e-c5a63f894549</refId>
-            <refName>Character Sets</refName>
-          </link>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <userInputBinding id="7d1b14ab-dbb8-4d9e-95fa-dbf9f59ce9e4">
+        </staticBinding>
+        <staticBinding id="738d9321-dc8d-4414-9c59-1d412d782454">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -317,15 +427,9 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>contentTransferEncoding</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value></value>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.7d1b14ab-dbb8-4d9e-95fa-dbf9f59ce9e4.prompt</prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <link>
-            <refId>c6e8be46-0bbc-46b6-965d-36e523c0aacf</refId>
-            <refName>Content Transfer Encoding</refName>
-          </link>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
+        </staticBinding>
         <staticBinding id="5ba1bdd8-a234-486f-9143-6c2092f6fa4e">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
@@ -387,7 +491,7 @@
           <value>AES256_CBC</value>
           <record>false</record>
         </staticBinding>
-        <userInputBinding id="fb48258b-a36a-439f-96bc-9c9122066124">
+        <staticBinding id="1cc4f93f-152e-403f-a57f-a4a81171c6c6">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -397,15 +501,9 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>enableTLS</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>false</value>
           <record>false</record>
-          <prompt>6f367007-6563-40e6-88ec-8b84197d398d.fb48258b-a36a-439f-96bc-9c9122066124.prompt</prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <link>
-            <refId>96a1ed25-cdc9-4ff6-8fba-e9c044c5ca53</refId>
-            <refName>Boolean - False Default</refName>
-          </link>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
+        </staticBinding>
         <staticBinding id="5c194cca-c58f-46eb-b83a-ea3bce3aa075">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
@@ -420,16 +518,16 @@
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="4d92d9dd-d336-4d7c-87b9-eb2a076b282b">
+        <transition id="e4177985-0de4-431b-ad3d-50a82190a039">
           <annotation></annotation>
-          <name>done</name>
+          <name>failure</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
-          <responseSymbol>done</responseSymbol>
+          <responseSymbol>failure</responseSymbol>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>e4669b3f-7622-4902-8d3f-baa5bea431ba</refId>
+            <refId>09130bca-b2ac-4fdd-b02a-9e38233d04de</refId>
           </destination>
           <source>
             <refId>e7fef2f8-971f-4fe7-b320-a2cb202e0afa</refId>
@@ -437,11 +535,40 @@
           <positions>
             <point>
               <x>110.0</x>
-              <y>178.0</y>
+              <y>194.0</y>
             </point>
             <point>
-              <x>313.0</x>
-              <y>192.0</y>
+              <x>219.0</x>
+              <y>445.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="1e47daf7-b685-4075-a5f2-c0ff8a850517">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>daca0c60-1a6d-41fe-9387-c01f601a0d3f</refId>
+          </destination>
+          <source>
+            <refId>e7fef2f8-971f-4fe7-b320-a2cb202e0afa</refId>
+          </source>
+          <positions>
+            <point>
+              <x>110.0</x>
+              <y>194.0</y>
+            </point>
+            <point>
+              <x>427.0</x>
+              <y>67.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -501,12 +628,12 @@
       <returnStepType>RESOLVED</returnStepType>
       <assignments/>
     </returnStep>
-    <returnStep id="583c19c6-4d3f-401b-b31f-90f8ed928c5a">
+    <returnStep id="09130bca-b2ac-4fdd-b02a-9e38233d04de">
       <annotation></annotation>
       <name>Error : failure</name>
       <bounds>
-        <x>360.0</x>
-        <y>292.0</y>
+        <x>169.0</x>
+        <y>411.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -524,7 +651,7 @@
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="664e3f73-5986-47c3-9d6f-0aebf012b534">
+        <transition id="f7203fce-03da-4df5-8194-1c23a3962c4e">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -533,10 +660,10 @@
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>583c19c6-4d3f-401b-b31f-90f8ed928c5a</refId>
+            <refId>09130bca-b2ac-4fdd-b02a-9e38233d04de</refId>
           </destination>
           <source>
-            <refId>583c19c6-4d3f-401b-b31f-90f8ed928c5a</refId>
+            <refId>09130bca-b2ac-4fdd-b02a-9e38233d04de</refId>
           </source>
           <positions/>
         </transition>
@@ -545,172 +672,6 @@
       <returnStepType>ERROR</returnStepType>
       <assignments/>
     </returnStep>
-    <step id="e4669b3f-7622-4902-8d3f-baa5bea431ba">
-      <annotation>6f367007-6563-40e6-88ec-8b84197d398d.e4669b3f-7622-4902-8d3f-baa5bea431ba.description</annotation>
-      <name>Local Ping</name>
-      <bounds>
-        <x>234.0</x>
-        <y>161.0</y>
-      </bounds>
-      <layer>-1</layer>
-      <hideInbound>false</hideInbound>
-      <addResultToRunContext>false</addResultToRunContext>
-      <isCriticalStep>false</isCriticalStep>
-      <isNonBlocking>false</isNonBlocking>
-      <isParallelStep>false</isParallelStep>
-      <isSingleResponse>false</isSingleResponse>
-      <recordInHistory>false</recordInHistory>
-      <recordRawOutput>true</recordRawOutput>
-      <recordPrimaryOutput>true</recordPrimaryOutput>
-      <checkPointStep>true</checkPointStep>
-      <historyCheckPointStep>true</historyCheckPointStep>
-      <scriptResultStep>false</scriptResultStep>
-      <userPrompt></userPrompt>
-      <bindings>
-        <userInputBinding id="b97810b8-e955-4fe3-a45e-64fdc6fc87f1">
-          <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>targetHost</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-          <prompt></prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <staticBinding id="dd518441-d520-4625-9412-79302b52d996">
-          <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>packetCount</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="93ec1053-b6c6-4320-bcac-e1a45e5f1ca3">
-          <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>packetSize</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="5b4407f4-5816-4624-8504-f76721fd733d">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>timeout</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <userInputBinding id="aaebfd4a-d70e-40fc-8cd1-085d8c2c1112">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>ipVersion</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-          <prompt></prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <link>
-            <refId>4a48be50-00c6-45db-bae7-1bee0410305b</refId>
-            <refName>IP Version</refName>
-          </link>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-      </bindings>
-      <transitions>
-        <transition id="3d7d058a-a6dc-4d6f-8188-e91584e1e588">
-          <annotation></annotation>
-          <name>success</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>success</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>daca0c60-1a6d-41fe-9387-c01f601a0d3f</refId>
-          </destination>
-          <source>
-            <refId>e4669b3f-7622-4902-8d3f-baa5bea431ba</refId>
-          </source>
-          <positions>
-            <point>
-              <x>284.0</x>
-              <y>184.0</y>
-            </point>
-            <point>
-              <x>343.0</x>
-              <y>85.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
-        <transition id="a3721347-3b36-4770-837c-4a60b30a7809">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>583c19c6-4d3f-401b-b31f-90f8ed928c5a</refId>
-          </destination>
-          <source>
-            <refId>e4669b3f-7622-4902-8d3f-baa5bea431ba</refId>
-          </source>
-          <positions>
-            <point>
-              <x>284.0</x>
-              <y>184.0</y>
-            </point>
-            <point>
-              <x>344.0</x>
-              <y>319.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
-      </transitions>
-      <properties/>
-      <opRef>
-        <refId>c460b8c8-e1f7-4321-a72c-6134da73811a</refId>
-      </opRef>
-      <assignments/>
-      <throttleSize>0</throttleSize>
-    </step>
   </steps>
-  <startSteps>e7fef2f8-971f-4fe7-b320-a2cb202e0afa</startSteps>
+  <startSteps>e4669b3f-7622-4902-8d3f-baa5bea431ba</startSteps>
 </flow>
