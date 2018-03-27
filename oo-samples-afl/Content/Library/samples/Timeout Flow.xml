@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="bf1c047c-3483-496c-8a15-4e9b53823eeb">
+  <descriptionCdata><![CDATA[bf1c047c-3483-496c-8a15-4e9b53823eeb.a0377fd8-976f-4d26-8ec5-4d32d46cee67.description=<pre>\nThis waits a fixed number of seconds\n\nInputs\:\n\tseconds\:        number of seconds to wait\n\nResponses\:\n\tPassed\:         Always\n\nResults and Context\:\n\tThere is no result\n\tNothing is placed into the context\n</pre>
+bf1c047c-3483-496c-8a15-4e9b53823eeb.a0377fd8-976f-4d26-8ec5-4d32d46cee67.prompt=This sample will demonstrate how you can make  flow wait for a specific amount of time before continuing.
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Timeout Flow</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="63ae1f15-110f-4854-9d08-d068670427f4">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>seconds</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="4efb0b06-dca1-409c-9691-eddd74716b3b">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="85d8c75e-f7cb-4580-9b66-08ee426c0f2c">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="d11e1b1b-0df4-42b5-9855-8df55a06733a">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="a0377fd8-976f-4d26-8ec5-4d32d46cee67">
+      <annotation>bf1c047c-3483-496c-8a15-4e9b53823eeb.a0377fd8-976f-4d26-8ec5-4d32d46cee67.description</annotation>
+      <name>Wait</name>
+      <bounds>
+        <x>159.0</x>
+        <y>80.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="61c516cf-1697-45fa-8db6-59edc75f0536">
+        <baseIcon>hourglass.png</baseIcon>
+        <basePath>Utilities/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>false</recordRawOutput>
+      <recordPrimaryOutput>false</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt>bf1c047c-3483-496c-8a15-4e9b53823eeb.a0377fd8-976f-4d26-8ec5-4d32d46cee67.prompt</userPrompt>
+      <bindings>
+        <userInputBinding id="f6692d4e-3b9c-4b87-bb5f-ae71ee491bbd">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>seconds</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <prompt></prompt>
+          <isMultiSelect>false</isMultiSelect>
+          <sourceDelimiter>|</sourceDelimiter>
+        </userInputBinding>
+      </bindings>
+      <transitions>
+        <transition id="e6f314cf-8d2e-4683-9a1d-0248cb35a151">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>3ff29393-c7f3-498a-bac2-2c334a727faa</refId>
+          </destination>
+          <source>
+            <refId>a0377fd8-976f-4d26-8ec5-4d32d46cee67</refId>
+          </source>
+          <positions>
+            <point>
+              <x>200.0</x>
+              <y>154.0</y>
+            </point>
+            <point>
+              <x>505.0</x>
+              <y>119.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties>
+        <entry>
+          <key>Prompt Title</key>
+          <modelValue id="05bcc330-f874-421f-afea-1adc3d1fbaf6">
+            <doubleValue>0.0</doubleValue>
+            <stringValue>Introduction</stringValue>
+            <encrypted>false</encrypted>
+            <type>9</type>
+          </modelValue>
+        </entry>
+        <entry>
+          <key>Prompt Width</key>
+          <modelValue id="98b0551a-f587-4782-80df-2918534f81e4">
+            <doubleValue>0.0</doubleValue>
+            <encrypted>false</encrypted>
+            <type>5</type>
+          </modelValue>
+        </entry>
+        <entry>
+          <key>Prompt Height</key>
+          <modelValue id="da1352cd-eb14-4c0b-b895-78d3cb636d3a">
+            <doubleValue>0.0</doubleValue>
+            <encrypted>false</encrypted>
+            <type>5</type>
+          </modelValue>
+        </entry>
+      </properties>
+      <opRef>
+        <refId>02e6de87-32b0-4421-8c96-d12ebc6cc5b8</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="3ff29393-c7f3-498a-bac2-2c334a727faa">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>455.0</x>
+        <y>85.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="ea08dad5-246d-4d26-9be7-a352da861767">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>3ff29393-c7f3-498a-bac2-2c334a727faa</refId>
+          </destination>
+          <source>
+            <refId>3ff29393-c7f3-498a-bac2-2c334a727faa</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+  </steps>
+  <startSteps>a0377fd8-976f-4d26-8ec5-4d32d46cee67</startSteps>
+</flow>
